@@ -1,0 +1,17 @@
+@extends('adminpanel.location.region.app')
+
+
+@section('css')
+
+@endsection
+
+
+
+@section('content')
+
+@endsection
+
+
+@section('script')
+
+@endsection
