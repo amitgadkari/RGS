@@ -1,4 +1,3 @@
- 
 @if(count($regions))
  <div class="table-responsive" id="content">
         
@@ -6,21 +5,21 @@
                 <thead>
                     <th>State</th>
                     <th>Region</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th>Action</th>
+                    <!-- <th>Delete</th> -->
                     <th>Sub Region</th>
 
                 </thead>
 
                 @foreach($regions as $region)
 
-                	<tr>
-                		<td>{{$region->name}}</td>
-                		<td>{{$region->name}}</td>
-                		<td>{{$region->name}}</td>
-                	<td><a href="{{}}" class="delete_()"></a></td>	
-                		<td><a href="{{}}" class="delete_()"></a></td>
-                	</tr>
+                    <tr>
+                        <td>{{$region->name}}</td>
+                        <td>{{$region->name}}</td>
+                        
+                        <td><a href="" class="btn btn-sm btn-danger">Delete</a></td>    
+                        <td><a href="{{url('Admin/Location/'.$region->id.'/Subregion/')}}" class="btn btn-sm btn-primary">Sub Regions</a></td>
+                    </tr>
 
                 @endforeach
             </table>

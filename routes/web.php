@@ -13,18 +13,23 @@
 
 
 	//Main home page
-	Route::group(['prefix' => 'Admin/Location','middleware'=>'web'], function () 
-	{
-    	Route::get('Region','Admin\Location\RegionController@index');
+	Route::group(['namespace'=>'Admin\Location','prefix' => 'Admin/Location','middleware'=>['web','auth']], function (){
 
-    //To add new region and to save it
-    	Route::get('Region/create','Admin\Location\RegionController@create');
-    	Route::post('Region/save','Admin\Location\RegionController@store');
+        // Controllers Within The "App\Http\Controllers\Dashboard" Namespace
+    	
+        Route::group(['namespace' => 'Region','prefix' => 'Region'], function() {
+            Route::get('/', 'RegionController@index');
+            Route::get('create',['uses' => 'RegionController@create']);
+            Route::post('save',['uses' => 'RegionController@store']); 
 
-    //To add new subregion and to save it
+        });
 
-    	Route::get('Subregion/new','Admin\Location\RegionController@createsub');
-    	Route::post('Subregion/save','Admin\Location\RegionController@storesub');
+        Route::group(['namespace' => 'Subregion','prefix' => '{region}/Subregion'], function() {
+            Route::get('/', 'SubregionController@index');
+            Route::get('/create',['uses' => 'SubregionController@create']);
+            Route::post('/save',['uses' => 'SubregionController@store']); 
+
+        });
 
     //To add new city and to save it
 
